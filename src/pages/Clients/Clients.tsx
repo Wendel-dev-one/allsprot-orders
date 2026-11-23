@@ -14,22 +14,15 @@ export function Clients() {
   const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
   const [selectedClient, setSelectedClient] = useState<Client | null>(null);
 
+  function handleCancelForm() {
+    setIsFormOpen(false);
+    setSelectedClient(null);
+  }
+
   function handleCreateClient(clientData: Omit<Client, "id">) {
     const createdClient = createClient(clientData);
     setClients((clients) => [...clients, createdClient]);
     handleCancelForm();
-  }
-
-  function handleDeleteClient(id: string) {
-    // Interrompe a exclusão se o usuário cancelar a confirmação.
-    if (!window.confirm("Tem certeza de que deseja excluir este cliente?")) {
-      return;
-    }
-
-    // Atualiza a interface somente se o serviço confirmar a exclusão.
-    if (deleteClient(id)) {
-      setClients((clients) => clients.filter((client) => client.id !== id));
-    }
   }
 
   function handleSelectClient(client: Client) {
@@ -54,9 +47,16 @@ export function Clients() {
     }
   }
 
-  function handleCancelForm() {
-    setIsFormOpen(false);
-    setSelectedClient(null);
+  function handleDeleteClient(id: string) {
+    // Interrompe a exclusão se o usuário cancelar a confirmação.
+    if (!window.confirm("Tem certeza de que deseja excluir este cliente?")) {
+      return;
+    }
+
+    // Atualiza a interface somente se o serviço confirmar a exclusão.
+    if (deleteClient(id)) {
+      setClients((clients) => clients.filter((client) => client.id !== id));
+    }
   }
 
   return (

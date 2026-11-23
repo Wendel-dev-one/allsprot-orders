@@ -50,7 +50,7 @@ export function ClientForm({
           {initialData ? "Editar Cliente" : "Novo Cliente"}
         </h2>
         <p className="text-sm text-slate-500">
-          Preencha as informações abaixo para registrar ou atualizar o cadastro.
+          {initialData ? "Preencha as informações abaixo para atualizar o cadastro." : "Preencha as informações abaixo para registrar um novo cliente."}
         </p>
       </div>
 

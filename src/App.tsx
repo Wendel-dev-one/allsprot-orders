@@ -2,6 +2,9 @@ import { Route, Routes } from "react-router";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Orders from "./pages/Orders/Orders";
 import MainLayout from "./components/layout/MainLayout";
+import { Clients } from "./pages/Clients/Clients";
+import { Products } from "./pages/Products/Products";
+
 
 function ComingSoon({ title }: { title: string }) {
   return (
@@ -13,7 +16,6 @@ function ComingSoon({ title }: { title: string }) {
 }
 
 function App() {
-  
   return (
     <>
       <Routes>
@@ -22,8 +24,8 @@ function App() {
             path="/novo-pedido"
             element={<ComingSoon title="Novo pedido" />}
           />
-          <Route path="/clientes" element={<ComingSoon title="Clientes" />} />
-          <Route path="/produtos" element={<ComingSoon title="Produtos" />} />
+          <Route path="/clientes" element={<Clients />} />
+          <Route path="/produtos" element={<Products />} />
           <Route path="/" element={<Dashboard />} />
           <Route path="/pedidos" element={<Orders />} />
         </Route>
