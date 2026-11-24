@@ -1,5 +1,6 @@
 import type { Client } from "../types/client";
 import { getStorageData, setStorageData } from "./storage/localStorage";
+import { deleteClientPricesByClientId } from "./clientPriceService";
 
 const CLIENTS_STORAGE_KEY = "allsprot_clients";
 
@@ -60,6 +61,10 @@ export function deleteClient(id: string): boolean {
   try {
     // Salva a nova lista e confirma o sucesso da exclusão.
     setStorageData(CLIENTS_STORAGE_KEY, updatedClients);
+    if (!deleteClientPricesByClientId(id)) {
+      setStorageData(CLIENTS_STORAGE_KEY, clients);
+      return false;
+    }
     return true;
   } catch (error) {
     // Registra a falha ao salvar e informa que a exclusão não foi concluída.

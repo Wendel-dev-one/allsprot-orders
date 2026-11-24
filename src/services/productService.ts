@@ -1,5 +1,6 @@
 import type { Product } from "../types/product";
 import { getStorageData, setStorageData } from "./storage/localStorage";
+import { deleteClientPricesByProductId } from "./clientPriceService";
 
 const PRODUCTS_STORAGE_KEY = "allsprot_products";
 
@@ -56,6 +57,10 @@ export function deleteProduct(id: string): boolean {
 
   try {
     setStorageData(PRODUCTS_STORAGE_KEY, updatedProducts);
+    if (!deleteClientPricesByProductId(id)) {
+      setStorageData(PRODUCTS_STORAGE_KEY, products);
+      return false;
+    }
     return true;
   } catch (error) {
     console.error("Erro ao excluir produto do localStorage:", error);

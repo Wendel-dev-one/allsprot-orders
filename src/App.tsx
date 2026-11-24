@@ -5,7 +5,6 @@ import MainLayout from "./components/layout/MainLayout";
 import { Clients } from "./pages/Clients/Clients";
 import { Products } from "./pages/Products/Products";
 
-
 function ComingSoon({ title }: { title: string }) {
   return (
     <div>
@@ -16,6 +15,7 @@ function ComingSoon({ title }: { title: string }) {
 }
 
 function App() {
+
   return (
     <>
       <Routes>
