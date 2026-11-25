@@ -4,6 +4,7 @@ import Orders from "./pages/Orders/Orders";
 import MainLayout from "./components/layout/MainLayout";
 import { Clients } from "./pages/Clients/Clients";
 import { Products } from "./pages/Products/Products";
+import { ClientPrices } from "./pages/ClientPrices/ClientPrices";
 
 function ComingSoon({ title }: { title: string }) {
   return (
@@ -20,14 +21,15 @@ function App() {
     <>
       <Routes>
         <Route element={<MainLayout />}>
+        <Route path="/" element={<Dashboard />} />
           <Route
             path="/novo-pedido"
             element={<ComingSoon title="Novo pedido" />}
           />
+          <Route path="/pedidos" element={<Orders />} />
           <Route path="/clientes" element={<Clients />} />
           <Route path="/produtos" element={<Products />} />
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/pedidos" element={<Orders />} />
+          <Route path="/precos-por-cliente" element={<ClientPrices />} />
         </Route>
       </Routes>
     </>

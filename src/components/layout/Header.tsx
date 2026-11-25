@@ -10,6 +10,7 @@ function Header() {
     "/pedidos": "Pedidos",
     "/clientes": "Clientes",
     "/produtos": "Produtos",
+    "/precos-por-cliente": "Preços por cliente",
   };
 
   const currentTitle = pageTitles[location.pathname] || "Página";

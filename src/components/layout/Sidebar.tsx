@@ -5,6 +5,7 @@ import {
   ClipboardList,
   Users,
   Package,
+  Tags,
 } from "lucide-react";
 
 function Sidebar() {
@@ -14,6 +15,7 @@ function Sidebar() {
     { name: "Pedidos", path: "/pedidos", icon: ClipboardList },
     { name: "Clientes", path: "/clientes", icon: Users },
     { name: "Produtos", path: "/produtos", icon: Package },
+    { name: "Preços por cliente", path: "/precos-por-cliente", icon: Tags },
   ];
 
   return (
