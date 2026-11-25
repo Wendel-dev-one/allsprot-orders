@@ -1,6 +1,7 @@
 import type { Client } from "../types/client";
 import { getStorageData, setStorageData } from "./storage/localStorage";
 import { deleteClientPricesByClientId } from "./clientPriceService";
+import { clientHasOrders } from "./orderQueries";
 
 const CLIENTS_STORAGE_KEY = "allsprot_clients";
 
@@ -47,6 +48,10 @@ export function updateClient(
 }
 
 export function deleteClient(id: string): boolean {
+  if (clientHasOrders(id)) {
+    return false;
+  }
+
   // Recupera a lista atual de clientes.
   const clients = getClients();
 

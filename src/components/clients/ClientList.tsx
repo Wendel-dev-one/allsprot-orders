@@ -75,7 +75,7 @@ export function ClientList({ clients, onEdit, onDelete }: ClientListProps) {
                     {client.address}
                   </td>
                   <td className="px-6 py-4">
-                    <div className="flex gap-4">
+                    <div className="flex justify-end gap-3">
                       <button
                         type="button"
                         onClick={() => onEdit(client)}

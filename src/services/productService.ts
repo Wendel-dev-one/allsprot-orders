@@ -1,6 +1,7 @@
 import type { Product } from "../types/product";
 import { getStorageData, setStorageData } from "./storage/localStorage";
 import { deleteClientPricesByProductId } from "./clientPriceService";
+import { productHasOrders } from "./orderQueries";
 
 const PRODUCTS_STORAGE_KEY = "allsprot_products";
 
@@ -47,6 +48,10 @@ export function updateProduct(
 }
 
 export function deleteProduct(id: string): boolean {
+  if (productHasOrders(id)) {
+    return false;
+  }
+
   const products = getProducts();
 
   const updatedProducts = products.filter((product) => product.id !== id);
